@@ -4,7 +4,17 @@ class Product:
         self.price=price
         self.category=category
 
-class Person():
+
+class ShoppingCart:
+    def __init__(self):
+        self.products={}
+    def add_product(self, product,quantity):
+        if product in self.products:
+            self.products[product] += quantity
+        else:
+            self.products[product] = quantity
+
+class Person:
      def __init__(self,name):
          self.name=name
 
@@ -12,8 +22,8 @@ class Person():
 class Customer(Person):
     def __init__(self,name,customer_id):
         self.customer_id=customer_id
-
         super().__init__(name)
+        self.cart=ShoppingCart()
 
 class Vendor(Person):
     def __init__(self,name,vendor_id):
